@@ -39,26 +39,19 @@ export default class Counter extends React.Component {
         clearInterval(this.timer);   
     }
 
-    resetInterval = () => {
-        this.stopCounting()
-        this.startCounting()
-    }
-
     editInterval = (oper) => {
         switch (oper) {
             case '+':
                 this.setState({
                     interval: this.state.interval + this.state.step
-                })
-                this.resetInterval()               
+                })         
                 break;
             case '-':
                 if (this.state.interval - this.state.step <= 0)
                     break
                 this.setState({
                     interval: this.state.interval - this.state.step
-                })
-                this.resetInterval()               
+                })          
                 break;                
             default:
                 break;
@@ -76,8 +69,8 @@ export default class Counter extends React.Component {
                 <br></br>
                 <div>Шаг {this.state.interval / 1000} секунд</div>
                 <button onClick={() => this.editInterval('+')}>Увеличить интервал на {this.state.step / 1000} секунду</button>
-                <button onClick={() => this.editInterval('-')}>Уменьшить интервал на {this.state.step / 1000} секунду</button>
-                
+                <button onClick={() => this.editInterval('-')}>Уменьшить интервал на {this.state.step / 1000} секунду</button>     
+                <button onClick={() => this.startCounting()}>Перезапустить счетчик</button>    
           </div>
         );
     }
